@@ -1,5 +1,318 @@
-/* Show it is fixed to the top */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+
+  --dal-black: #242424;       /* Wingtip Black */
+  --dal-gold: #FFD400;        /* Beak Gold */
+  --dal-gold-hover: #e6bf00;  /* Interactive hover state */
+  --dal-white: #FFFFFF;       /* Cloud White */
+
+  /* Supporting UI & Gauge Status Colours */
+  --dal-surface: #F7F7F7;
+  --dal-border: #E2E2E2;
+  --dal-text-muted: #525252;
+  --status-low: #198754;
+  --status-moderate: #FFD400;
+  --status-high: #D9381E;
+
+  /* Bootstrap 5 Theme Overrides */
+  --bs-body-font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --bs-body-color: var(--dal-black);
+  --bs-body-bg: var(--dal-surface);
+  --bs-primary: var(--dal-gold);
+  --bs-dark: var(--dal-black);
+}
+
+/* Base & Page Layout */
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  min-height: 75rem;
-  padding-top: 4.5rem;
+  font-family: var(--bs-body-font-family);
+  background-color: var(--dal-surface);
+  color: var(--dal-black);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5.5rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*  Navigation Bar & Dal Eagle Logo */
+
+.navbar.bg-dark {
+  background-color: var(--dal-black) !important;
+  border-bottom: 4px solid var(--dal-gold);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  box-shadow: 0 2px 10px rgba(36, 36, 36, 0.18);
+}
+
+.navbar .container-fluid,
+main.container,
+.dal-footer .container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.55rem;
+  letter-spacing: -0.02em;
+  color: var(--dal-white) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.navbar-dal-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--dal-gold);
+  background-color: var(--dal-gold);
+  flex-shrink: 0;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  color: var(--dal-gold) !important;
+}
+
+.dal-nav-subtitle {
+  color: #D4D4D4;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/*  Main Content, Horizontal Dal Logo & Hero Card */
+
+main.container {
+  flex: 1;
+  padding-bottom: 2.5rem;
+}
+
+main .bg-body-tertiary {
+  background-color: var(--dal-white) !important;
+  border: 1px solid var(--dal-border);
+  border-left: 6px solid var(--dal-gold);
+  border-radius: 0.5rem !important;
+  box-shadow: 0 4px 16px rgba(36, 36, 36, 0.06);
+  padding: 2.5rem !important;
+  margin-bottom: 2rem;
+}
+
+.dal-brand-banner {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--dal-border);
+}
+
+.dal-horizontal-logo {
+  height: 80px; 
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+main h1 {
+  font-weight: 800;
+  font-size: clamp(1.85rem, 3.5vw, 2.65rem);
+  color: var(--dal-black);
+  letter-spacing: -0.025em;
+  margin-bottom: 0.85rem;
+  line-height: 1.2;
+}
+
+main p.lead {
+  font-size: clamp(1.05rem, 1.8vw, 1.18rem);
+  font-weight: 400;
+  color: var(--dal-text-muted);
+  max-width: 68ch;
+  margin-bottom: 0;
+}
+
+/* Dalplex Busyness Gauge / Meter Styling (Acceptance Criterion #2) */
+
+.gauge-section {
+  background-color: var(--dal-white);
+  border: 1px solid var(--dal-border);
+  border-top: 5px solid var(--dal-black);
+  border-radius: 0.5rem;
+  padding: 2.25rem;
+  box-shadow: 0 4px 16px rgba(36, 36, 36, 0.06);
+  text-align: center;
+}
+
+.gauge-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--dal-border);
+}
+
+.gauge-title {
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--dal-black);
+  margin: 0;
+}
+
+.gauge-timestamp {
+  font-size: 0.9rem;
+  color: var(--dal-text-muted);
+}
+
+.gauge-value {
+  font-size: clamp(2.75rem, 6vw, 4.25rem);
+  font-weight: 800;
+  color: var(--dal-black);
+  line-height: 1.1;
+  margin: 0.5rem 0;
+}
+
+.gauge-status-badge {
+  display: inline-block;
+  background-color: var(--dal-gold);
+  color: var(--dal-black);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.35rem 1rem;
+  border-radius: 2rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.gauge-meter-track,
+.gauge-section .progress {
+  width: 100%;
+  max-width: 640px;
+  height: 28px;
+  margin: 0 auto 0.75rem auto;
+  background-color: #EAEAEA;
+  border: 2px solid var(--dal-black);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.gauge-meter-fill,
+.gauge-section .progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--status-low) 0%, var(--dal-gold) 55%, var(--status-high) 100%);
+  transition: width 0.6s ease-in-out;
+  font-weight: 700;
+  color: var(--dal-black);
+}
+
+.gauge-scale-labels {
+  display: flex;
+  justify-content: space-between;
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dal-text-muted);
+}
+
+.status-low {
+  background-color: var(--status-low);
+  color: var(--dal-white);
+}
+
+.status-moderate {
+  background-color: var(--dal-gold);
+  color: var(--dal-black);
+}
+
+.status-high {
+  background-color: var(--status-high);
+  color: var(--dal-white);
+}
+
+/* Footer */
+
+.dal-footer {
+  background-color: var(--dal-black);
+  color: #D4D4D4;
+  border-top: 3px solid var(--dal-gold);
+  padding: 1.1rem 0;
+  font-size: 0.88rem;
+  margin-top: auto;
+}
+
+.dal-footer-tag {
+  color: var(--dal-gold);
+  font-weight: 600;
+}
+
+/*  Desktop & Mobile Responsiveness */
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 4.75rem;
+  }
+
+  .navbar.bg-dark {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .navbar-dal-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .navbar-brand {
+    font-size: 1.35rem;
+  }
+
+  .dal-horizontal-logo {
+    height: 38px;
+  }
+
+  main .bg-body-tertiary,
+  .gauge-section {
+    padding: 1.5rem !important;
+  }
+
+  .gauge-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .gauge-meter-track,
+  .gauge-section .progress {
+    height: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  main.container,
+  .navbar .container-fluid,
+  .dal-footer .container {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+
+  .dal-horizontal-logo {
+    height: 32px;
+  }
+
+  main .bg-body-tertiary,
+  .gauge-section {
+    padding: 1.25rem !important;
+  }
 }
