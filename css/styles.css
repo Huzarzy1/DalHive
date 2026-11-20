@@ -1,0 +1,22 @@
+/* gauge test */
+
+#gauge-track {
+    position: relative;
+    width: 300px;
+    height: 24px;
+    border: 1px solid black;
+}
+
+#gauge-fill {
+    height: 100%;
+    background: green;
+}
+
+#gauge-value {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    line-height: 24px;
+}
