@@ -4,10 +4,11 @@ let busynessData = {};
 async function loadBusynessData() {
 
     try{
-        const response = await fetch('./dalplex_besttime.json');
+        // Fetch the data from the PHP endpoint
+        const response = await fetch('./dalplex.php');
 
         if(!response.ok){
-            throw new Error('Could not load JSON file');
+            throw new Error(`Could not load busyness data (HTTP ${response.status})`);
         }
 
         const data = await response.json();
