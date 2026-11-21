@@ -148,3 +148,8 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# PHP backend secrets and runtime state
+backend/php/config.php
+backend/php/dalplex.lock
+backend/php/dalplex.fail
