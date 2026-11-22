@@ -23,7 +23,9 @@ async function updateGauge() {
     const value = getBusynessByHour(day, hour);
 
     document.getElementById('gauge').style.setProperty('--value', value);
-    
+    // the CSS appends "% Full" after the number once this is non-empty
+    document.getElementById('gauge-value').textContent = value;
+
     
     const statusEl = document.getElementById('gauge-status');
     if (statusEl) {
