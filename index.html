@@ -1,24 +1,86 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Astro v5.18.2" />
     <title>DalHive</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <!-- html for gauge -->
-    <div id="gauge">
-        <div id="gauge-track">
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.3/examples/navbar-fixed/" 
+    />
+    <script src="../assets/js/color-modes.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX" crossorigin="anonymous">
+    <meta name="theme-color" content="#712cf9" />
+    <link href="css/styles.css" rel="stylesheet" /> <!-- add Dal branding, adjust layout, colours etc.-->
+    <link rel="icon" type="image/png" href="images/dal-eagle-icon.png" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md fixed-top bg-dark" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="images/dal-eagle-icon.png" alt="Dalhousie Eagle Emblem" class="navbar-dal-icon" />
+          DalHive
+        </a>
+      </div>
+    </nav>
+    <main class="container">
+      <div class="bg-body-tertiary p-5 rounded">
+        <div class="dal-brand-banner">
+          <img src="images/dal-logo-horizontal.png" alt="Dalhousie University Logo" class="dal-horizontal-logo" />
+        </div>
+      </div>
+
+      <div class="bg-body-tertiary p-5 rounded">
+        <h1>Welcome to Dalhive!</h1>
+        <p class="lead">
+          Make your gym trips more predictable with DalHive!
+          With this real-time indicator, you'll never have to guess how busy the Dalplex is before going, helping you plan accordingly.
+          The higher the number, the more crowded the gym currently is.
+        </p>
+      </div>
+
+      <!-- Dalplex Live Busyness Meter -->
+      <div class="bg-body-tertiary p-4 p-md-5 rounded busyness-card mt-4">
+        <div class="meter-header">
+          <div>
+            <span class="meter-eyebrow">Live Dalplex Status</span>
+            <h2 class="meter-title">Current Gym Occupancy</h2>
+          </div>
+          <span class="meter-live-badge">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            Real-Time
+          </span>
+        </div>
+
+        <!-- Gauge Markup -->
+        <div id="gauge" role="region" aria-label="Dalplex occupancy gauge">
+          <div id="gauge-track">
             <div id="gauge-fill"></div>
             <div id="gauge-value"></div>
-        </div>
-        <div id="gauge-labels">
-            <div id="gauge-min">0</div>
-            <div id="gauge-max">100</div>
-        </div>
-    </div>
+          </div>
 
-    <!-- import gauge script -->
+          <div id="gauge-labels">
+            <div id="gauge-min">0 &bull; Quiet</div>
+            <div class="gauge-mid">50 &bull; Moderate</div>
+            <div id="gauge-max">100 &bull; Peak</div>
+          </div>
+        </div>
+
+        <!-- Visual Zone Legend -->
+        <div class="meter-legend">
+          <span class="legend-item"><i class="swatch swatch-low"></i> Low (0–35)</span>
+          <span class="legend-item"><i class="swatch swatch-mod"></i> Moderate (36–70)</span>
+          <span class="legend-item"><i class="swatch swatch-high"></i> Crowded (71–100)</span>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js" integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu" crossorigin="anonymous"></script>
     <script type="module" src="js/busynessGauge.js"></script>
-</body>
+  </body>
 </html>

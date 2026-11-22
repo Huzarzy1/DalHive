@@ -21,11 +21,23 @@ async function updateGauge() {
 
     // grab busyness value
     const value = getBusynessByHour(day, hour);
+
+    document.getElementById('gauge').style.setProperty('--value', value);
     
-    // update the gauge number
-    document.getElementById('gauge-value').textContent = value;
-    // update the gauge bar
-    document.getElementById('gauge-fill').style.width = value + "%";
+    
+    const statusEl = document.getElementById('gauge-status');
+    if (statusEl) {
+        if (value <= 35) {
+            statusEl.textContent = "Low Crowd • Plenty of Space";
+            statusEl.className = "gauge-crowd-label crowd-low";
+        } else if (value <= 70) {
+            statusEl.textContent = "Moderately Busy";
+            statusEl.className = "gauge-crowd-label crowd-mod";
+        } else {
+            statusEl.textContent = "Very Crowded • Peak Hours";
+            statusEl.className = "gauge-crowd-label crowd-high";
+        }
+    }
 }
 
 updateGauge();
