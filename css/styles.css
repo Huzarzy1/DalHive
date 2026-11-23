@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --dal-black: #242424;       /* Wingtip Black */
+  --dal-gold: #FFD400;        /* Beak Gold */
+  --dal-gold-hover: #e6bf00;
+  --dal-white: #FFFFFF;       /* Cloud White */
+  --dal-surface: #F7F7F7;
+  --dal-border: #E2E2E2;
+  --dal-text-muted: #525252;
+  --status-low: #5DBB47;
+  --status-moderate: #F9C835;
+  --status-high: #E53935;
+
+  --bs-body-font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --bs-body-color: var(--dal-black);
+  --bs-body-bg: var(--dal-surface);
+  --bs-primary: var(--dal-gold);
+  --bs-dark: var(--dal-black);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--bs-body-font-family);
+  background-color: var(--dal-surface);
+  color: var(--dal-black);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5.5rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Navigation Bar & Dal Eagle Logo */
+.navbar.bg-dark {
+  background-color: var(--dal-black) !important;
+  border-bottom: 4px solid var(--dal-gold);
+  padding: 0.75rem 0;
+  box-shadow: 0 2px 10px rgba(36, 36, 36, 0.18);
+}
+
+.navbar .container-fluid,
+main.container,
+.dal-footer .container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.55rem;
+  letter-spacing: -0.02em;
+  color: var(--dal-white) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.navbar-dal-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--dal-gold);
+  background-color: var(--dal-gold);
+  flex-shrink: 0;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  color: var(--dal-gold) !important;
+}
+
+/* Main Content & Brand Cards */
+main.container {
+  flex: 1;
+  padding-bottom: 2.5rem;
+}
+
+main .bg-body-tertiary {
+  background-color: var(--dal-white) !important;
+  border: 1px solid var(--dal-border);
+  border-left: 6px solid var(--dal-gold);
+  border-radius: 0.5rem !important;
+  box-shadow: 0 4px 16px rgba(36, 36, 36, 0.06);
+  padding: 2.5rem !important;
+  margin-bottom: 2rem;
+}
+
+.dal-brand-banner {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--dal-border);
+}
+
+.dal-horizontal-logo {
+  height: 80px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+main h1 {
+  font-weight: 800;
+  font-size: clamp(1.85rem, 3.5vw, 2.65rem);
+  color: var(--dal-black);
+  letter-spacing: -0.025em;
+  margin-bottom: 0.85rem;
+  line-height: 1.2;
+}
+
+main p.lead {
+  font-size: clamp(1.05rem, 1.8vw, 1.18rem);
+  color: var(--dal-text-muted);
+  max-width: 68ch;
+  margin-bottom: 0;
+}
+
+/* Dalplex Semicircular Speedometer Card */
+main .bg-body-tertiary.busyness-card {
+  border-left: 1px solid var(--dal-border);
+  border-top: 5px solid var(--dal-gold);
+  box-shadow: 0 8px 24px rgba(36, 36, 36, 0.08);
+  transition: box-shadow 0.25s ease;
+}
+
+main .bg-body-tertiary.busyness-card:hover {
+  box-shadow: 0 12px 30px rgba(36, 36, 36, 0.12);
+}
+
+.meter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.meter-eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--dal-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.meter-title {
+  margin: 0;
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--dal-black);
+}
+
+.meter-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--dal-black);
+  color: var(--dal-gold);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--dal-gold);
+  animation: dalPulse 2s infinite;
+}
+
+@keyframes dalPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* Gauge Container & Unclipped Hollow Pivot Ring */
+#gauge {
+  --value: 50;
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  margin: 0.5rem auto 1.25rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#gauge::after {
+  content: "";
+  position: absolute;
+  top: 151px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--dal-white);
+  border: 10px solid var(--dal-black);
+  box-shadow: 0 2px 6px rgba(36, 36, 36, 0.25);
+  z-index: 4;
+}
+
+/* Outer Semicircular Bezel & Tri-Color Arc */
+#gauge-track {
+  position: relative;
+  width: 340px;
+  height: 170px;
+  background-color: #E6E6E6;
+  border-radius: 170px 170px 12px 12px;
+  padding: 14px 14px 0 14px;
+  overflow: visible;
+}
+
+#gauge-track::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 156px 156px 0 0;
+  background: conic-gradient(
+    from -90deg at 50% 100%,
+    var(--status-low) 0deg 60deg,
+    var(--status-moderate) 60deg 120deg,
+    var(--status-high) 120deg 180deg,
+    transparent 180deg
+  );
+  -webkit-mask: radial-gradient(circle at 50% 100%, transparent 0 88px, #000 89px);
+          mask: radial-gradient(circle at 50% 100%, transparent 0 88px, #000 89px);
+}
+
+#gauge-track::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 176px;
+  height: 88px;
+  background-color: var(--dal-white);
+  border-radius: 88px 88px 0 0;
+  border-bottom: 14px solid #E6E6E6;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* Rotating Dark Needle */
+#gauge-fill {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 14px !important;
+  height: 122px;
+  margin-left: -7px;
+  background-color: var(--dal-black);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+  transform-origin: 50% calc(100% - 4px);
+  transform: rotate(calc((var(--value) - 50) * 1.8deg));
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 3;
+}
+
+/* Numeric Percentage Pill & Crowdedness Status */
+#gauge-value {
+  position: absolute;
+  bottom: -54px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--dal-black);
+  color: var(--dal-gold);
+  font-size: 1.05rem;
+  font-weight: 800;
+  padding: 0.25rem 0.9rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(36, 36, 36, 0.16);
+  z-index: 5;
+}
+
+#gauge-value:not(:empty)::after {
+  content: "% Full";
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--dal-white);
+  margin-left: 0.25rem;
+}
+
+#gauge-value:empty::before {
+  content: "Loading...";
+  font-size: 0.85rem;
+  color: var(--dal-white);
+}
+
+#gauge-status {
+  position: absolute;
+  bottom: -84px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.88rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.crowd-low { color: #3E8E2E; }
+.crowd-mod { color: #B28900; }
+.crowd-high { color: #D32F2F; }
+
+/* 0 and 100 End Labels & Bottom Zone Legend */
+#gauge-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 340px;
+  margin-top: 3.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+#gauge-min { color: #3E8E2E; }
+.gauge-mid { display: none; }
+#gauge-max { color: #D32F2F; }
+
+.meter-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--dal-border);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--dal-text-muted);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  border: 1.5px solid var(--dal-black);
+}
+
+.swatch-low { background-color: var(--status-low); }
+.swatch-mod { background-color: var(--status-moderate); }
+.swatch-high { background-color: var(--status-high); }
+
+/* Footer */
+.dal-footer {
+  background-color: var(--dal-black);
+  color: #D4D4D4;
+  border-top: 3px solid var(--dal-gold);
+  padding: 1.1rem 0;
+  font-size: 0.88rem;
+  margin-top: auto;
+}
+
+.dal-footer-tag {
+  color: var(--dal-gold);
+  font-weight: 600;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  body { padding-top: 4.75rem; }
+  .navbar-dal-icon { width: 32px; height: 32px; }
+  .navbar-brand { font-size: 1.35rem; }
+  .dal-horizontal-logo { height: 38px; }
+  main .bg-body-tertiary { padding: 1.5rem !important; }
+  .meter-header { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+  main.container, .navbar .container-fluid, .dal-footer .container { padding: 0 0.9rem; }
+  .dal-horizontal-logo { height: 32px; }
+  main .bg-body-tertiary { padding: 1.25rem !important; }
+  .meter-title { font-size: 1.3rem; }
+  #gauge::after { top: 121px; }
+  #gauge-track {
+    width: 280px;
+    height: 140px;
+    border-radius: 140px 140px 10px 10px;
+    padding: 12px 12px 0 12px;
+  }
+  #gauge-track::before {
+    -webkit-mask: radial-gradient(circle at 50% 100%, transparent 0 72px, #000 73px);
+            mask: radial-gradient(circle at 50% 100%, transparent 0 72px, #000 73px);
+  }
+  #gauge-track::after {
+    width: 144px;
+    height: 72px;
+    border-radius: 72px 72px 0 0;
+    border-bottom-width: 12px;
+  }
+  #gauge-fill { height: 100px; }
+  #gauge-labels { width: 280px; }
+  .meter-legend { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+}

@@ -1,0 +1,10 @@
+# Block web access to the config
+<FilesMatch "^(config\.php|config\.example\.php|dalplex\.lock|dalplex\.fail|dalplex\.json\.tmp)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
